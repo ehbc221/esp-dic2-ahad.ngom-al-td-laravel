@@ -6,6 +6,9 @@ return [
     'details' => 'Détails',
     'modifier' => 'Modifier',
     'supprimer' => 'Supprimer',
-    'accueil' => 'Accueil'
+    'accueil' => 'Accueil',
+    'inscription' => 'Register',
+    'connexion' => 'Connexion',
+    'deconnexion' => 'Déconnexion',
 
 ];

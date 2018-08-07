@@ -1,38 +1,54 @@
-<table class="table">
-    <tr>
+<table class="table table-bordered">
+    <tr class="bg-info">
         <th>
             {{ trans('etudiant.nom') }}
         </th>
         <th>
             {{ trans('etudiant.prenom') }}
         </th>
-        <th>
+        <th colspan="3">
             {{ trans('etudiant.actions') }}
         </th>
     </tr>
-    @foreach($etudiants as $etudiant)
-        <tr>
-            <td>
-                {{ $etudiant->nom }}
-            </td>
-            <td>
-                {{ $etudiant->prenom }}
-            </td>
-            <td>
-                <a href="{{ route('showEtudiant', $etudiant->id) }}">{{ trans('commun.details') }}</a>
-            </td>
-            <td>
-                <a href="{{ route('editEtudiant', $etudiant->id) }}">{{ trans('commun.modifier') }}</a>
-            </td>
-            <td>
-                <a href="{{ route('deleteEtudiant', $etudiant->id) }}"
-                   onclick="event.preventDefault();
-                           document.getElementById('supprimer_etudiant').submit();">{{ trans('commun.supprimer') }}</a>
+    @if($etudiants->isNotEmpty())
+        @foreach($etudiants as $etudiant)
+            @php($form_id = "supprimer_etudiant_{{ $etudiant->id }}")
+            <tr>
+                <td>
+                    {{ $etudiant->nom }}
+                </td>
+                <td>
+                    {{ $etudiant->prenom }}
+                </td>
+                <td>
+                    <a href="{{ route('showEtudiant', $etudiant->id) }}" class="btn btn-info">{{ trans('commun.details') }}</a>
+                </td>
+                <td>
+                    <a href="{{ route('editEtudiant', $etudiant->id) }}" class="btn btn-info">{{ trans('commun.modifier') }}</a>
+                </td>
+                <td>
+                    <a href="{{ route('deleteEtudiant', $etudiant->id) }}" class="btn btn-info"
+                       onclick="event.preventDefault();
+                               confirmerSuppression('{{ $form_id }}')">{{ trans('commun.supprimer') }}</a>
 
-                <form id="supprimer_etudiant" action="{{ route('deleteEtudiant', $etudiant->id) }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
-            </td>
+                    <form id="{{ $form_id }}" action="{{ route('deleteEtudiant', $etudiant->id) }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </td>
+            </tr>
+        @endforeach
+    @else
+        <tr>
+            <td colspan="3"><span class="text text-danger">Aucun étudiant à afficher</span></td>
         </tr>
-    @endforeach
+    @endif
 </table>
+
+<script type="text/javascript">
+    function confirmerSuppression(id) {
+        var confirmation = confirm('Voulez-vous vraiment supprimer l\'étudiant?');
+        if (confirmation) {
+            document.getElementById(id).submit();
+        }
+    }
+</script>

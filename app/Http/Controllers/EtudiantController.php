@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * @author El Hadj Babacar Cissé
+ * @version 1.0
+ *
+ */
+
 namespace App\Http\Controllers;
 
 use App\Etudiant;

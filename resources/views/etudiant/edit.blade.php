@@ -26,12 +26,13 @@
 
                         @include('etudiant._form')
 
-                        <br />
-                        <br />
+                            <br />
+                            <hr />
+                            <br />
 
                         <p>
-                            <a href="{{ route('showEtudiant', $etudiant->id) }}">{{ trans('commun.details') }}</a><br />
-                            <a href="{{ route('home', $etudiant->id) }}">{{ trans('commun.accueil') }}</a>
+                            <a href="{{ route('showEtudiant', $etudiant->id) }}" class="btn btn-info">{{ trans('commun.details') }}</a>
+                            <a href="{{ route('home', $etudiant->id) }}" class="btn btn-info">{{ trans('commun.accueil') }}</a>
                         </p>
                     </div>
                 </div>

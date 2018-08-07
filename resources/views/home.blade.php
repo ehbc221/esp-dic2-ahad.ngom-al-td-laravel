@@ -26,6 +26,12 @@
 
                     @include('etudiant._form')
 
+                        <br />
+                        <br />
+                        <hr />
+                        <br />
+                        <br />
+
                     @include('etudiant._table')
                 </div>
             </div>

@@ -12,15 +12,21 @@
                         @php($prenom = trans('etudiant.prenom'))
                         @php($bouton = trans('commun.enregistrer'))
 
-                        <strong>{{ $nom }} : </strong> {{ $etudiant->nom }}<br />
-                        <strong>{{ $prenom }} : </strong> {{ $etudiant->prenom }}
+                        <p>
+                            <strong>{{ $nom }} : </strong>{{ $etudiant->nom }}
+                        </p>
+                        <p>
+                            <strong>{{ $prenom }} : </strong> {{ $etudiant->prenom }}
+                        </p>
 
                         <br />
+                        <br />
+                        <hr />
                         <br />
 
                         <p>
-                            <a href="{{ route('editEtudiant', $etudiant->id) }}">{{ trans('commun.modifier') }}</a><br />
-                            <a href="{{ route('home', $etudiant->id) }}">{{ trans('commun.accueil') }}</a>
+                            <a href="{{ route('editEtudiant', $etudiant->id) }}" class="btn btn-info">{{ trans('commun.modifier') }}</a>
+                            <a href="{{ route('home', $etudiant->id) }}" class="btn btn-info">{{ trans('commun.accueil') }}</a>
                         </p>
 
                     </div>

@@ -8,9 +8,15 @@
 @php($prenom = trans('etudiant.prenom'))
 @php($bouton = trans('commun.enregistrer'))
 
-{!! Form::label('nom', $nom) !!}
-{!! Form::text('nom') !!}
-{!! Form::label('prenom', $prenom) !!}
-{!! Form::text('prenom') !!}
-{!! Form::submit($bouton, ['class' => 'btn btn-sm btn-primary m-t-n-xs'], true) !!}
+<div class="form-group">
+    {!! Form::label('nom', $nom, ['class' => 'label-control']) !!}
+    {!! Form::text('nom', old('nom'), ['class' => 'form-control']) !!}
+</div>
+<div class="form-group">
+    {!! Form::label('prenom', $prenom, ['class' => 'label-control']) !!}
+    {!! Form::text('prenom', old('prenom'), ['class' => 'form-control']) !!}
+</div>
+<div class="form-group">
+    {!! Form::submit($bouton, ['class' => 'btn btn-sm btn-info m-t-n-xs'], true) !!}
+</div>
 {!! Form::close() !!}
